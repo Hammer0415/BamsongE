@@ -3,22 +3,22 @@ using UnityEngine;
 public class Controller_Target : MonoBehaviour
 {
     // public
-    public float fMoveSpeed = 3.0f;     // Å¸°Ù ÀÌµ¿ ¼Óµµ
+    public float fMoveSpeed = 3.0f;     // íƒ€ê²Ÿ ì´ë™ ì†ë„
 
     // private
-    private bool bIsRight = false;      // ÀÌµ¿ ¹æÇâ È®ÀÎ
-    private GameObject cMainCamera;     // ¸ÞÀÎ Ä«¸Þ¶ó
+    private bool bIsRight = false;      // ì´ë™ë°©í–¥ í™•ì¸ ë³€ìˆ˜
+    private GameObject cMainCamera;     // ë©”ì¸ ì¹´ë©”ë¼
 
-    // ÁÂ¿ì ÀÌµ¿ ÇÔ¼ö
+    // ï¿½Â¿ï¿½ ï¿½Ìµï¿½ ï¿½Ô¼ï¿½
     private void Movement()
     {
-        // ¿ÞÂÊ ÀÌµ¿ È®ÀÎ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ È®ï¿½ï¿½
         if (this.transform.position.x >= 3.0f)
         {
             bIsRight = false;
         }
 
-        // ¿À¸¥ÂÊ ÀÌµ¿ È®ÀÎ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ È®ï¿½ï¿½
         if (this.transform.position.x <= -3.0f)
         {
             bIsRight = true;
@@ -28,18 +28,18 @@ public class Controller_Target : MonoBehaviour
         {
             if (bIsRight == false)
             {
-                this.transform.Translate(Vector3.right * (-Time.deltaTime * fMoveSpeed));       // ¿ÞÂÊÀ¸·Î ÀÌµ¿
+                this.transform.Translate(Vector3.right * (-Time.deltaTime * fMoveSpeed));       // ì™¼ìª½ìœ¼ë¡œ ì´ë™
             }
             else
             {
-                this.transform.Translate(Vector3.right * (Time.deltaTime * fMoveSpeed));        // ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿
+                this.transform.Translate(Vector3.right * (Time.deltaTime * fMoveSpeed));        // ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™
             }
         }
     }
 
     void Start()
     {
-        cMainCamera = GameObject.FindWithTag("MainCamera");     // ¸ÞÀÎ Ä«¸Þ¶ó Ã£±â
+        cMainCamera = GameObject.FindWithTag("MainCamera");     // ë©”ì¸ ì¹´ë©”ë¼ ì°¾ê¸°
     }
 
     void Update()

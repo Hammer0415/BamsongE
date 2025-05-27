@@ -3,53 +3,53 @@ using UnityEngine;
 public class Controller_Camera : MonoBehaviour
 {
     // public
-    public Transform tCameraPos_01;         // ½ÃÀÛ Ä«¸Ş¶ó À§Ä¡
-    public Transform tCameraPos_02;         // ÁÜ ÀÎ Ä«¸Ş¶ó À§Ä¡
-    public bool bIsZoom = false;            // Ä«¸Ş¶ó ÁÜ ÀÎ ¾Æ¿ô È®ÀÎ º¯¼ö
-    public float fZoomCoolTime = 1.0f;      // Ä«¸Ş¶ó ÁÜ ÄğÅ¸ÀÓ
+    public Transform tCameraPos_01;         // ì¹´ë©”ë¼ ì‹œì‘ ìœ„ì¹˜
+    public Transform tCameraPos_02;         // ì¹´ë©”ë¼ ì¤Œ ì¸ ìœ„ì¹˜
+    public bool bIsZoom = false;            // ì¹´ë©”ë¼ ì¤Œ ì¸ ì•„ì›ƒ í™•ì¸ ë³€ìˆ˜
+    public float fZoomCoolTime = 1.0f;      // ì¹´ë©”ë¼ ì¤Œ ì¿¨íƒ€ì„
 
     // private
-    private float fCurZoomCoolTime = 0.0f;  // º¯°æµÇ´Â Ä«¸Ş¶ó ÁÜ ÄğÅ¸ÀÓ
+    private float fCurZoomCoolTime = 0.0f;  // ë³€ê²½ ë˜ëŠ” ì¹´ë©”ë¼ ì¤Œ ì¿¨íƒ€ì„
 
-    // ÁÜ ÀÎ Ã¼Å© ÇÔ¼ö
+    // ï¿½ï¿½ ï¿½ï¿½ Ã¼Å© ï¿½Ô¼ï¿½
     public void ZoomIn()
     {
         fCurZoomCoolTime = fZoomCoolTime;
         bIsZoom = true;
     }
 
-    // ÁÜ ÀÎ ¾Æ¿ô ±¸Çö ÇÔ¼ö
+    // ï¿½ï¿½ ï¿½ï¿½ ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     private void ZoomInOut()
     {
-        // ÁÜ ÄğÅ¸ÀÓ ±¸Çö
+        // ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (fCurZoomCoolTime >= 0.0f)
         {
-            fCurZoomCoolTime -= 1 * Time.deltaTime;     // ÁÜ ÄğÅ¸ÀÓ ÁÙÀÌ±â
+            fCurZoomCoolTime -= 1 * Time.deltaTime;     // ì¹´ë©”ë¼ ì¤Œ ì¿¨íƒ€ì„ ì¤„ì´ê¸°
         }
 
-        // ÁÜ ¾Æ¿ô ±¸Çö
+        // ï¿½ï¿½ ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (fCurZoomCoolTime <= 0.0f)
         {
             bIsZoom = false;
         }
 
-        // ÁÜ ÀÎ ¾Æ¿ô ±¸Çö
+        // ï¿½ï¿½ ï¿½ï¿½ ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (bIsZoom == false)
         {
-            this.transform.position = Vector3.Lerp(this.transform.position, tCameraPos_01.position, Time.deltaTime * 2.0f);             // ½ÃÀÛ Ä«¸Ş¶ó À§Ä¡·Î ÀÌµ¿
-            this.transform.localRotation = Quaternion.Slerp(this.transform.rotation, tCameraPos_01.rotation, Time.deltaTime * 2.0f);    // ½ÃÀÛ Ä«¸Ş¶ó È¸Àü°ªÀ¸·Î º¯°æ
+            this.transform.position = Vector3.Lerp(this.transform.position, tCameraPos_01.position, Time.deltaTime * 2.0f);             // ì¹´ë©”ë¼ ì‹œì‘ ìœ„ì¹˜ë¡œ ì´ë™
+            this.transform.localRotation = Quaternion.Slerp(this.transform.rotation, tCameraPos_01.rotation, Time.deltaTime * 2.0f);    // ì¹´ë©”ë¼ ì‹œì‘ íšŒì „ê°’ìœ¼ë¡œ ë³€ê²½
         }
         if (bIsZoom == true)
         {
-            this.transform.position = Vector3.Lerp(this.transform.position, tCameraPos_02.position, Time.deltaTime * 2.0f);             // ÁÜ ÀÎ Ä«¸Ş¶ó À§Ä¡·Î ÀÌµ¿
-            this.transform.localRotation = Quaternion.Slerp(this.transform.rotation, tCameraPos_02.rotation, Time.deltaTime * 2.0f);    // ½ÃÀÛ Ä«¸Ş¶ó È¸Àü°ªÀ¸·Î º¯°æ
+            this.transform.position = Vector3.Lerp(this.transform.position, tCameraPos_02.position, Time.deltaTime * 2.0f);             // ì¹´ë©”ë¼ ì¤Œ ìœ„ì¹˜ë¡œ ì´ë™
+            this.transform.localRotation = Quaternion.Slerp(this.transform.rotation, tCameraPos_02.rotation, Time.deltaTime * 2.0f);    // ì¹´ë©”ë¼ ì¤Œ íšŒì „ê°’ìœ¼ë¡œ ì„¤ì •
         }
     }
 
     void Start()
     {
-        this.gameObject.transform.position = tCameraPos_01.position;        // Ä«¸Ş¶ó ½ÃÀÛ À§Ä¡ Á¤ÇÏ±â
-        this.gameObject.transform.rotation = tCameraPos_01.rotation;        // Ä«¸Ş¶ó ½ÃÀÛ È¸Àü°ª Á¤ÇÏ±â
+        this.gameObject.transform.position = tCameraPos_01.position;        // ì¹´ë©”ë¼ ì‹œì‘ ìœ„ì¹˜ ì„¤ì •
+        this.gameObject.transform.rotation = tCameraPos_01.rotation;        // ì¹´ë©”ë¼ ì‹œì‘ íšŒì „ê°’ ì„¤ì •
     }
 
     void Update()

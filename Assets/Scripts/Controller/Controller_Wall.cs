@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Controller_Wall : MonoBehaviour
 {
-    // ¿ÀºêÁ§Æ® µ¹¸®´Â ÇÔ¼ö
+    // ë°©ì–´ë²½ ëŒë¦¬ëŠ” í•¨ìˆ˜
     private void WallRotation()
     {
-        this.transform.Rotate(new Vector3(0, 0, 1) * 180 * Time.deltaTime);     // ¿ÀºêÁ§Æ® µ¹¸®±â
+        this.transform.Rotate(new Vector3(0, 0, 1) * 180 * Time.deltaTime);     // ë°©ì–´ë²½ ëŒë¦¬ê¸°
     }
 
     void Update()
