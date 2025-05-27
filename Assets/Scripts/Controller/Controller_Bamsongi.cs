@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Controller_Bamsongi : MonoBehaviour
 {
+    // public
+    public int iWindForceRange = 4;
     // private
     private GameObject scGameManager;           // 게임 메니저 스크립트
     private GameObject cMainCamera;             // 메인 카메라
@@ -30,20 +32,20 @@ public class Controller_Bamsongi : MonoBehaviour
 
     void Start()
     {
-        Application.targetFrameRate = 60;                       // 게임 프레임 조절
+        Application.targetFrameRate = 60;                                           // 게임 프레임 조절
 
-        Destroy(this.gameObject, 1.0f);                         // 3초 후 밤송이 삭제
+        Destroy(this.gameObject, 1.0f);                                             // 3초 후 밤송이 삭제
 
-        scGameManager = GameObject.FindWithTag("GameManager");  // 게임 메니저 찾기
+        scGameManager = GameObject.FindWithTag("GameManager");                      // 게임 메니저 찾기
 
-        cMainCamera = GameObject.FindWithTag("MainCamera");     // 메인 카메라 찾기
+        cMainCamera = GameObject.FindWithTag("MainCamera");                         // 메인 카메라 찾기
 
-        iWindForce = Random.Range(-10, 10);                     // 바람 세기 랜덤 값
+        iWindForce = Random.Range(-iWindForceRange, iWindForceRange);               // 바람 세기 랜덤 값
         Debug.Log(iWindForce);
     }
 
     void Update()
     {
-        GetComponent<Rigidbody>().AddForce(transform.right * (iWindForce * 5));      // 바람 적용
+        GetComponent<Rigidbody>().AddForce(transform.right * (iWindForce * 5));     // 바람 적용
     }
 }
